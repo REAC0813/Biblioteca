@@ -1,0 +1,94 @@
+﻿@using Examen.Biblioteca.Business.Entity
+@model EBiblioteca
+@{
+    Layout = null;
+}
+<div class="modal" tabindex="-1" role="dialog" id="ModalAgregar">
+    <div class='modal-dialog modal-lg' role='document'>
+        <div class='modal-content'>
+            <div class="modal-header">
+                <h3 id="tituloBiblioteca" class="modal-title">
+                    Insertar Registro(s)
+                </h3>
+
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+
+
+            <div class='modal-body'>
+                <div class="row">
+
+                    @using (Html.BeginForm("AgregarPost", "Home"))
+                    {
+
+                        <div class="col-md-6 col-lg-6 col-sm-6 col-6">
+                            <div class="form-group">
+                                <label>Numero De Volumen</label>
+                                <input type="text" autofocus title="Numero De Volumen" class="form-control" name="NumeroDeVolumen" placeholder="Numero De Volumen" id="TxtNumeroDeVolumen" />
+                            </div>
+                        </div>
+
+                        <div class="col-md-6 col-lg-6 col-sm-6 col-6">
+                            <div class="form-group">
+                                <label>Titulo</label>
+                                <input type="text" autofocus title="Titulo" class="form-control" name="Titulo" placeholder="Titulo" id="TxtTitulo" />
+                            </div>
+                        </div>
+
+                        <div class="col-md-6 col-lg-6 col-sm-6 col-6">
+                            <div class="form-group">
+                                <label>Sala</label>
+                                @Html.DropDownList("idSala", null, "SALA", new { @class = "form-control" })
+                            </div>
+                        </div>
+
+
+                       
+
+                        <div class="col-md-6 col-lg-6 col-sm-6 col-6">
+                            <div class="form-group">
+                                <label>Estante</label>
+                                @Html.DropDownList("idEstante", null, "Estante", new { @class = "form-control" })
+                            </div>
+                        </div>
+
+                        <div class="col-md-6 col-lg-6 col-sm-6 col-6">
+                            <div class="form-group">
+                                <label>Librero</label>
+                                @Html.DropDownList("idLibrero", null, "Librero", new { @class = "form-control" })
+                            </div>
+                        </div>
+
+                        <div class="col-md-6 col-lg-6 col-sm-6 col-6">
+                            <div class="form-group">
+                                <label>Posicion</label>
+                                @Html.DropDownList("idPosicion", null, "Posicion", new { @class = "form-control" })
+                            </div>
+                        </div>
+
+                        <div class="col-md-7 col-lg-7 col-sm-7 col-7">
+                            <input type="submit" class="btn-btn-succes btn-sm" style="width:20%;" value="Agregar" />
+                        </div>
+
+
+                    }
+
+                </div>
+
+
+            </div>
+
+
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+
+

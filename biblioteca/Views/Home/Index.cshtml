@@ -1,0 +1,164 @@
+﻿
+
+@using Examen.Biblioteca.Business.Entity
+
+@model List<EBiblioteca>
+
+@{
+    Layout = null;
+}
+<style>
+
+    .banner {
+        background: url('../../img/biblioteca.jpg')no-repeat 0px 0px;
+        background-size: cover;
+        min-height: 100px;
+        padding: 100px 0 0 0;
+        border-radius:5px;
+    }
+</style>
+    
+<!DOCTYPE html>
+
+<html>
+<head>
+    <link href="~/Content/bootstrap.css" rel="stylesheet" />
+    <script src="~/Scripts/jquery-3.6.0.js"></script>
+    <script src="~/Scripts/bootstrap.min.js"></script>
+   
+
+    <meta name="viewport" content="width=device-width" />
+    @*  *@
+    <title>Index</title>
+</head>
+
+
+
+<body>
+
+    <div id="renderModal"></div>
+
+
+    <div class="container">
+        <div class="row">
+            <div class="panel panel-default">
+                <div class="panel-heading" style="background-color:dodgerblue;width:100%;text-align:center">
+                    <h1>Biblioteca De Babel</h1>
+
+                </div>
+            </div>
+        </div>
+
+        <div class="page-header">
+            @*<button type="button" style="background-color:dodgerblue;" onclick="GenerarReporteEstadosFinancieros('E');" class="btn btn-light" data-toggle="tooltip" data-placement="bottom" title="Generar Informe Estados Financieros " id="btnGenerarInformeEstadosFinancieros"><i class="fa fa-download fa-1x"></i></button>*@
+            @*<button type="button"style="background-color:floralwhite;width:30px"data-placement="bottom" onclick="AregarUsuario();" title="Agregar usuario" class="glyphicon glyphicon-log-in"> </button>*@
+            <button type="button" style="background-color:dodgerblue;" onclick="Agregar();" class="btn btn-light" data-toggle="tooltip" data-placement="bottom" title="Seleccionar Reportes a incluir" id="btnSeleccionarReporte">Agregar</button>
+
+            @*<button type="button" class="btn btn-primary" id="modal1" onclick="Aregar();" data-toggle="modal" data-target="#staticBackdrop">
+                Agreagar
+                </button>*@
+        </div>
+
+        <div class="banner">
+
+            <div class="row">
+                <div class="col-xs-6">
+                    @if (TempData["error"] != null)
+                    {
+                        <span class="label label-danger" style="width:100%">@TempData["error"]</span>
+                    }
+                    @if (TempData["create"] != null)
+                    {
+                        <span class="label label-success" style="width:100%">@TempData["create"]</span>
+                    }
+                    @if (TempData["update"] != null)
+                    {
+                        <span class="label label-info" style="width:100%">@TempData["update"]</span>
+                    }
+                    @if (TempData["delete"] != null)
+                    {
+                        <span class="label label-warning" style="width:100%">@TempData["delete"]</span>
+                    }
+
+                </div>
+            </div>
+
+
+           
+            <div class="row">
+
+
+                <div class="col-sm-12">
+
+                    <h1 style="color:chocolate">Libros</h1>
+
+
+                    <table class="table-bordered text-center" style="background-color:white;width:100%;border-radius:5px;">
+                        <thead style="vertical-align:super;">
+                            <tr role="row" class="panel-success" style="background-color:lightsteelblue">
+
+                                <td>Numero De Volumen</td>
+                                <td>Titulo</td>
+                                <td>Sala</td>
+                                <td>Estante</td>
+                                <td>Librero</td>
+                                <td>Posicion</td>
+                                <td></td>
+                                <td></td>
+                                
+
+
+                            </tr>
+                        </thead>
+                        @foreach (EBiblioteca e in Model)
+                        {
+                            <tr class="table-responsive">
+
+
+                                <td>@e.NumeroDeVolumen</td>>
+                                <td>@e.Titulo</td>
+                                <td>@e.Sala.Sala</td>
+                                <td>@e.Estante.Estante</td>
+                                <td>@e.Librero.Librero</td>
+                                <td>@e.Posicion.Posicion</td>
+
+
+                                <td>
+                                    <a style="text-decoration:none" href="/Home/EliminarPost/@e.id">
+                                        Eliminar
+                                    </a>
+                                </td>
+                                <td>
+                                    <a href="/Home/EditarGet/@e.id">Editar</a>
+                                
+                            </tr>
+
+                        }
+                    </table>
+
+                    @if (TempData["read"] != null)
+                    {
+
+                        <div class="input-group" style="padding-top:10px;width:100%">
+                            <span class="label label-info" style="width:100%">@TempData["read"]</span>
+
+                            @*<input disabled style="width:75%" type="text" class="label-info" value=@TempData["read"]  aria-describedby="basic-addon1" />*@
+                        </div>
+
+
+                        @*<span class="label label-info" style="width:100%">@TempData["read"]</span>*@
+                    }
+
+                </div>
+
+            </div>
+
+
+        </div>
+    </div>
+
+
+</body>
+</html>
+
+<script src="~/Scripts/agregar.js"></script>
